@@ -1,20 +1,24 @@
 async function loadDogImages() {
-fetch('https://dog.ceo/api/breeds/image/random/10')
-.then(response => response.json())
-.then(data => {
-  document.getElementById('dog-images').innerHTML = `
-    <img src="${data.message[0]}" width="200">
-    <img src="${data.message[1]}" width="200">
-    <img src="${data.message[2]}" width="200">
-    <img src="${data.message[3]}" width="200">
-    <img src="${data.message[4]}" width="200">
-    <img src="${data.message[5]}" width="200">
-    <img src="${data.message[6]}" width="200">
-    <img src="${data.message[7]}" width="200">
-    <img src="${data.message[8]}" width="200">
-    <img src="${data.message[9]}" width="200">
-  `;
-});
+  const response = await fetch('https://dog.ceo/api/breeds/image/random/10');
+  const data = await response.json();
+  const imageUrls = data.message;
+
+  const slider = document.getElementById('myslider');
+  slider.innerHTML = "";
+
+  imageUrls.forEach(url => {
+      const img = document.createElement('img');
+      img.src = url;
+      img.style.width = "100%";
+      img.style.height = "100%";
+      slider.appendChild(img);
+  });
+
+  simpleslider.getSlider({
+      container: slider,
+      duration: 1,
+      delay: 3
+  });
 }
 async function loadDogBreeds() {
     const res = await fetch('https://dogapi.dog/api/v2/breeds');
