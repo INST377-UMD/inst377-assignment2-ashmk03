@@ -35,10 +35,10 @@ async function loadDogBreeds() {
   }
   function showBreedInfo(breed) {
     document.getElementById('breed-name').textContent = breed.attributes.name;
-    document.getElementById('breed-description').textContent = breed.attributes.description || 'No description available.';
+    document.getElementById('breed-description').textContent = breed.attributes.description;
     const life = breed.attributes.life || {};
-    document.getElementById('breed-min-life').textContent = life.min ?? 'N/A';
-    document.getElementById('breed-max-life').textContent = life.max ?? 'N/A';
+    document.getElementById('breed-min-life').textContent = life.min;
+    document.getElementById('breed-max-life').textContent = life.max;
     document.getElementById('breed-info').style.display = 'block';
   }
   
@@ -48,3 +48,33 @@ async function loadDogBreeds() {
     loadDogImages();
     loadDogBreeds();
   };
+  if (typeof annyang !== "undefined") {
+    const commands = {
+      'hello': () => {
+        alert("Hello World");
+      },
+      'change the color to :color': (color) => {
+        document.body.style.backgroundColor = color;
+      },
+      'navigate to *page': (page) => {
+        window.location.href = `${page.toLowerCase()}.html`;
+      },
+      'Load Dog Breed *dogbreed': (dogbreed) => {
+        document.getElementById(dogbreed).click();
+      }
+    };
+    
+      annyang.addCommands(commands);
+    
+      function startVoice() {
+        if (annyang) {
+          annyang.start();
+        }
+      }
+    
+      function stopVoice() {
+        if (annyang) {
+          annyang.abort();
+        }
+      }
+}

@@ -8,7 +8,8 @@ if (typeof annyang !== "undefined") {
     },
     'navigate to *page': (page) => {
       window.location.href = `${page.toLowerCase()}.html`;
-    }
+    },
+    ''
   };
 
   annyang.addCommands(commands);
