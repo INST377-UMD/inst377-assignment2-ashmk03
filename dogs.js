@@ -42,33 +42,7 @@ async function loadDogBreeds() {
     document.getElementById('breed-info').style.display = 'block';
   }
   
-  function startVoice() {
-    if (annyang) {
-      const commands = {
-        'hello': () => alert('Hello World'),
-        'change the color to *color': color => document.body.style.backgroundColor = color,
-        'navigate to *page': page => window.location.href = `${page.toLowerCase()}.html`,
-        'load dog breed *breed': breedName => {
-          fetch('https://dogapi.dog/api/v2/breeds')
-            .then(res => res.json())
-            .then(data => {
-              const match = data.data.find(b => b.attributes.name.toLowerCase() === breedName.toLowerCase());
-              if (match) {
-                showBreedInfo(match);
-              } else {
-                alert(`Could not find breed: ${breedName}`);
-              }
-            });
-        }
-      };
-  
-      annyang.addCommands(commands);
-      annyang.start();
-    }
-  }
-  function stopVoice() {
-    if (annyang) annyang.abort();
-  }
+
 
   window.onload = () => {
     loadDogImages();
