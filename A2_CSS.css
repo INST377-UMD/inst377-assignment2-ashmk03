@@ -28,15 +28,15 @@ body {
     background-color: white;
     color: black;
     border: 2px solid #04AA6D;
-    padding: 10px 20px; /* Added padding for better button size */
-    font-size: 16px; /* Added font size */
-    cursor: pointer; /* Added cursor style to show pointer on hover */
-    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for hover */
+    border-radius: 5;
+    padding: 20px;
+    gap: 10px;
+    font-size: 16px;
 }
 
 .button:hover {
-    background-color: #04AA6D; /* Change background color on hover */
-    color: white; /* Change text color on hover */
+    background-color: #04AA6D;
+    color: white; 
 }
 
 /* Cool Buttons */
@@ -94,7 +94,7 @@ body {
 
   .button-container {
     display: flex;
-    justify-content: center; /* or space-between / flex-start */
+    justify-content: center;
     align-items: center;
     margin-top: 40px;
   }
@@ -152,13 +152,14 @@ body {
   }
 
 /*Dogs*/
-
-  #dog-carousel {
-    width: 80%;
-    margin: 0 auto;
+#slider-wrapper{
+  position: relative;
+  height: 100vh;
 }
 
 #breed-buttons-container {
     margin: 20px;
+    gap: 10;
+    padding: 5;
 }
 
