@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Assignment 2 - Dogs</title>
+  <link rel="stylesheet" href="A2_CSS.css">
+  <script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.6.0/annyang.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/simple-slider/1.0.0/simpleslider.min.js"></script>
+  <script src="dogs.js" defer></script>
+</head>
+<body>
+    <header id="header">
+        <h1>Ashley Kharbanda's Assignment 2</h1>
+    </header>
+
+    <nav id="main-nav">
+        <ul>
+            <li><a href = "home.html">Home</a></li>
+            <li><a href = "dogs.html">Dogs</a></li>
+            <li><a href = "stocks.html">Stocks</a></li>
+        </ul>
+    </nav>
+<h1>Doggos!</h1>
+
+<div id="dog-images"></div>
+
+  <h2>Dog Breeds!</h2>
+  <div id="breed-buttons" class="button-container"></div>
+
+  <div id="breed-info" style="display:none; border: 1px solid #ccc; padding: 10px; margin-top: 20px;">
+    <h3 id="breed-name"></h3>
+    <p id="breed-description"></p>
+    <p><strong>Min Life:</strong> <span id="breed-min-life"></span> years</p>
+    <p><strong>Max Life:</strong> <span id="breed-max-life"></span> years</p>
+  </div>
+
+  <div class="audio-controls">
+    <h1>Audio Instructions</h1>
+    <h3>Ensure Your Mic Is Enabled <h3>
+    <p><strong>Want to get a hello back?</strong><br>
+    Say "Hello"!<br></p>
+    <p><strong>Want to Navigate to a Page?</strong><br>
+    Say "Navigate to 'Page'"!<br></p>
+    <p><strong>Want to Change the Color?</strong><br>
+    Say "Change the color to 'color'"!<br></p>
+    <p><strong>Want to Learn a Dog Breed?</strong><br>
+    Say Load Dog Breed 'Dog Breed Name'"!<br></p>
+    <button onclick="startVoice()">Turn On Audio</button>
+    <button onclick="stopVoice()">Turn Off Audio</button>
+</div>
+
+</body>
+</html>

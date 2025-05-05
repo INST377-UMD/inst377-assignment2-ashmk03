@@ -1,0 +1,72 @@
+async function loadDogImages() {
+fetch('https://dog.ceo/api/breeds/image/random/10')
+.then(response => response.json())
+.then(data => {
+  document.getElementById('dog-images').innerHTML = `
+    <img src="${data.message[0]}" width="200">
+    <img src="${data.message[1]}" width="200">
+    <img src="${data.message[2]}" width="200">
+    <img src="${data.message[3]}" width="200">
+    <img src="${data.message[4]}" width="200">
+    <img src="${data.message[5]}" width="200">
+    <img src="${data.message[6]}" width="200">
+    <img src="${data.message[7]}" width="200">
+    <img src="${data.message[8]}" width="200">
+    <img src="${data.message[9]}" width="200">
+  `;
+});
+}
+async function loadDogBreeds() {
+    const res = await fetch('https://dogapi.dog/api/v2/breeds');
+    const data = await res.json();
+    const container = document.getElementById('breed-buttons');
+  
+    data.data.forEach(breed => {
+      const button = document.createElement('button');
+      button.textContent = breed.attributes.name;
+      button.classList.add('button');
+      button.onclick = () => showBreedInfo(breed);
+      container.appendChild(button);
+    });
+  }
+  function showBreedInfo(breed) {
+    document.getElementById('breed-name').textContent = breed.attributes.name;
+    document.getElementById('breed-description').textContent = breed.attributes.description || 'No description available.';
+    const life = breed.attributes.life || {};
+    document.getElementById('breed-min-life').textContent = life.min ?? 'N/A';
+    document.getElementById('breed-max-life').textContent = life.max ?? 'N/A';
+    document.getElementById('breed-info').style.display = 'block';
+  }
+  
+  function startVoice() {
+    if (annyang) {
+      const commands = {
+        'hello': () => alert('Hello World'),
+        'change the color to *color': color => document.body.style.backgroundColor = color,
+        'navigate to *page': page => window.location.href = `${page.toLowerCase()}.html`,
+        'load dog breed *breed': breedName => {
+          fetch('https://dogapi.dog/api/v2/breeds')
+            .then(res => res.json())
+            .then(data => {
+              const match = data.data.find(b => b.attributes.name.toLowerCase() === breedName.toLowerCase());
+              if (match) {
+                showBreedInfo(match);
+              } else {
+                alert(`Could not find breed: ${breedName}`);
+              }
+            });
+        }
+      };
+  
+      annyang.addCommands(commands);
+      annyang.start();
+    }
+  }
+  function stopVoice() {
+    if (annyang) annyang.abort();
+  }
+
+  window.onload = () => {
+    loadDogImages();
+    loadDogBreeds();
+  };
