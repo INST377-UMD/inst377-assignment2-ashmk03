@@ -1,0 +1,58 @@
+<html>
+
+<head>
+    <title>Assignment 2 - Stocks</title>
+    <link rel="stylesheet" href="A2_CSS.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.6.0/annyang.min.js"></script>
+    <script src='stocks.js' defer></script>
+    <script src="annyang.js" defer></script>
+
+</head>
+
+<body>
+
+    <header id="header">
+        <h1>Ashley Kharbanda's Assignment 2</h1>
+    </header>
+
+
+    <nav id="main-nav">
+        <ul>
+            <li><a href = "home.html">Home</a></li>
+            <li><a href = "dogs.html">Dogs</a></li>
+            <li><a href = "stocks.html">Stocks</a></li>
+        </ul>
+    </nav>
+
+    <h1>Let's Chart Some Stocks!</h1>
+
+    <form id = "stockForm" onsubmit = "populateChart()">
+        <input id ="ticker" type="text" required maxlength="5"><br>
+        <select id ="timePeriod">
+            <option value = "30">30 Days</option>
+            <option value = "60">60 Days</option>
+            <option value = "90">90 Days</option>
+        </select><br>
+        <button type = "submit" id = "button-7">Submit</button>
+    </form>
+    <canvas id="stockChart" width="800" height="400"></canvas>
+    <table id="stocksTable">
+        <tr>
+            <th>Ticker</th>
+            <th>Comment Count</th>
+            <th>Sentiment</th>
+        </tr>
+    </table>
+
+    <div class="audio-controls">
+        <h1>Audio Instructions</h1>
+        <h3>Ensure Your Mic Is Enabled <h3>
+        <p><strong>Want to get a hello back?</strong><br>
+        Say "Hello"!<br></p>
+        <p><strong>Want to Navigate to a Page?</strong><br>
+        Say "Navigate to 'Page'"!<br></p>
+        <p><strong>Want to Change the Color?</strong><br>
+        Say "Change the color to 'color'"!<br></p>
+        <button onclick="startVoice()">Turn On Audio</button>
+        <button onclick="stopVoice()">Turn Off Audio</button>
+    </div>
