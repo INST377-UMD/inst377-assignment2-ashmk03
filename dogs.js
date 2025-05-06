@@ -48,6 +48,7 @@ async function loadDogBreeds() {
     loadDogImages();
     loadDogBreeds();
   };
+  
   if (typeof annyang !== "undefined") {
     const commands = {
       'hello': () => {
@@ -59,8 +60,8 @@ async function loadDogBreeds() {
       'navigate to *page': (page) => {
         window.location.href = `${page.toLowerCase()}.html`;
       },
-      'Load Dog Breed *dogbreed': (dogbreed) => {
-        document.getElementById(dogbreed).click();
+      'Load Dog Breed *dogbreedname': (dogbreedname) => {
+        document.getElementById(dogbreedname).click();
       }
     };
     
