@@ -19,14 +19,14 @@
     <nav id="main-nav">
         <ul>
             <li><a href = "home.html">Home</a></li>
-            <li><a href = "Dogs.html">Dogs</a></li>
-            <li><a href = "Stocks.html">Stocks</a></li>
+            <li><a href = "dogs.html">Dogs</a></li>
+            <li><a href = "stocks.html">Stocks</a></li>
         </ul>
     </nav>
 
     <h1>Let's Chart Some Stocks!</h1>
 
-    <form id = "stockForm" onsubmit = "populateChart(event)">
+    <form id = "stockForm" onsubmit = "populateChart()">
         <input id ="ticker" type="text" required maxlength="5"><br>
         <select id ="timePeriod">
             <option value = "30">30 Days</option>
